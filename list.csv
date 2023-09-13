@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 name,url,parameter
 Everything,https://www.voidtools.com/Everything-1.4.1.1024.x64-Setup.exe,/S
 Men Reduct,https://github.com/henrypp/memreduct/releases/download/v.3.4/memreduct-3.4-setup.exe,/S
+=======
+name,url,parameter
+Everything,https://www.voidtools.com/Everything-1.4.1.1024.x64-Setup.exe,/S
+Men Reduct,https://github.com/henrypp/memreduct/releases/download/v.3.4/memreduct-3.4-setup.exe,/S
+>>>>>>> 836d3115c835a327feedf42f5004d8fbd636f4aa
 RoboSim,https://oss.zmrobo.com/robosim/app/RoboSim_2.2.0.115_win.exe, /SILENT VERYSILENT
