@@ -1,0 +1,6 @@
+.vscode/
+.idea/
+__pycache__/
+main.c
+*.pyc
+__pycache__/download.cpython-311.pyc

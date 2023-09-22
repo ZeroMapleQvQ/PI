@@ -1,0 +1,4 @@
+name,url,parameter,fs
+Everything,https://www.voidtools.com/Everything-1.4.1.1024.x64-Setup.exe,/S,1
+MemReduct,https://github.com/henrypp/memreduct/releases/download/v.3.4/memreduct-3.4-setup.exe,/S,1
+RoboSim,https://oss.zmrobo.com/robosim/app/RoboSim_2.2.0.115_win.exe, /VERYSILENT,116789760
