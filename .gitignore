@@ -5,3 +5,9 @@ main.c
 *.pyc
 __pycache__/download.cpython-311.pyc
 *.exe
+build/
+dist/
+*.spec
+build.ps1
+Pipfile
+Pipfile.lock

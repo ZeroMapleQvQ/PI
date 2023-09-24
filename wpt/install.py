@@ -3,8 +3,6 @@ from wpt.download import download
 from time import sleep
 import requests
 
-a = 'Do you want to install '
-c = "? [Y/n]:"
 h = ".exe"
 
 
@@ -25,7 +23,7 @@ def anzhuang(name, url, parameter, fs):
 
     print("\033c", end="")
     print("Program Installer V2.0".center(120))
-    get = input("是否要安装"+name+c)  # 获取用户输入
+    get = input("是否要安装"+name+"? [Y/n]:")  # 获取用户输入
     # 确认要安装
     if get == "Y" or get == "y" or get == '':
         try:

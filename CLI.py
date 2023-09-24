@@ -6,18 +6,15 @@
 
 from os import system, path
 from time import sleep
-import requests
 import click
 import csv
-import fnmatch
+from fnmatch import fnmatch
 from tqdm import tqdm
-import requests
-import pandas as pd
+from pandas import read_csv
 from uninstall.util import *
-from wpt.download import download
 from wpt.install import anzhuang
+from wpt.download import download
 
-a = 'Do you want to install '
 b = None
 c = "? [Y/n]:"
 h = ".exe"
@@ -40,7 +37,7 @@ for row in reader:
     uninstalls.append(load_uninstall)
     fss.append(load_fs)  # 将fs添加到fss列表中
 
-installed = pd.read_csv(".\csvs\installed.csv")
+installed = read_csv(".\csvs\installed.csv")
 
 # 计数
 count = 0
@@ -72,7 +69,7 @@ def main(install=None, search=None, remove=None, getfilesize=None):
         get_uninstall = str(uninstalls[count])
         get_fs = fss[count]
     if install != None:
-        if fnmatch.fnmatch(get_name, install) == True:
+        if fnmatch(get_name, install) == True:
             anzhuang(get_name, get_url, get_parameter, get_url)
         else:
             print("没有找到:(")
@@ -81,7 +78,7 @@ def main(install=None, search=None, remove=None, getfilesize=None):
     if search != None:
         count = 0
         for i in range(line_count):
-            if fnmatch.fnmatch(names[count], '*'+search+'*') == True:
+            if fnmatch(names[count], '*'+search+'*') == True:
                 lists.append(names[count])
                 count += 1
             else:
@@ -99,7 +96,7 @@ def main(install=None, search=None, remove=None, getfilesize=None):
     if getfilesize != None:
         count = 0
         for i in range(line_count):
-            if fnmatch.fnmatch(names[count], '*'+getfilesize+'*') == True:
+            if fnmatch(names[count], '*'+getfilesize+'*') == True:
                 download(urls[count], names[count]+h)
                 fs = path.getsize(names[count]+h)
                 system("del .\\"+names[count]+h)
@@ -115,29 +112,5 @@ count += 1
 f.close()
 
 
-def download(url: str, fname: str):
-    resp = requests.get(url, stream=True)
-    total = int(resp.headers.get('content-length', 0))
-    with open(fname, 'wb') as file, tqdm(
-        desc=fname,
-        total=total,
-        unit='iB',
-        unit_scale=True,
-        unit_divisor=1024,
-    ) as bar:
-        for data in resp.iter_content(chunk_size=1024):
-            size = file.write(data)
-            bar.update(size)
-
-
 if __name__ == '__main__':
     main()
-
-# 结束安装
-print("\033c", end="")
-system("CLS")
-print("Program Installer V1.8".center(120))
-print("三秒后退出")
-sleep(3)
-system("CLS")
-print("\033c", end="")
