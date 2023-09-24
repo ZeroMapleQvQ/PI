@@ -1,6 +1,7 @@
 from tqdm import tqdm
 import requests
 
+
 def download(url: str, fname: str):
     resp = requests.get(url, stream=True)
     total = int(resp.headers.get('content-length', 0))

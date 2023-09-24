@@ -1,5 +1,5 @@
 from os import system, path
-from download import download
+from wpt.download import download
 from time import sleep
 import requests
 
@@ -8,7 +8,7 @@ c = "? [Y/n]:"
 h = ".exe"
 
 
-def install(name, url, parameter, fs):
+def anzhuang(name, url, parameter, fs):
     # 下载部分
     def dl():
         print("\033c", end="")
@@ -34,7 +34,7 @@ def install(name, url, parameter, fs):
         except FileNotFoundError:
             pass
             # 不存在或大小不正确
-            if judgment == False or fsize != int("fs"):
+            if judgment == False or fsize != int("get_fs"):
                 try:
                     dl()  # 进行下载
                     b = True  # 记录是否下载正确的文件
@@ -42,7 +42,7 @@ def install(name, url, parameter, fs):
                     error()  # 进行错误处理
                     b = False  # 记录是否下载正确的文件
             # 存在或大小正确
-            elif judgment == True or fsize == int("116789760"):
+            elif judgment == True or fsize == int("get_fs"):
                 b = True  # 记录是否下载正确的文件
         # 已经下载正确的文件,进行安装
         if b == True:
