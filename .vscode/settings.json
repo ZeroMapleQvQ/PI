@@ -1,4 +1,5 @@
 {
-    "editor.suggest.snippetsPreventQuickSuggestions": false,
-    "aiXcoder.showTrayIcon": true
+	"editor.suggest.snippetsPreventQuickSuggestions": false,
+	"aiXcoder.showTrayIcon": true,
+	"cSpell.words": ["getfilesize"]
 }

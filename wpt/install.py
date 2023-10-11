@@ -3,16 +3,16 @@ from wpt.download import download
 from time import sleep
 import requests
 
-h = ".exe"
+extension = ".exe"
 
 
-def anzhuang(name, url, parameter, fs):
+def install_(name, url, parameter, fs):
     # 下载部分
     def dl():
         print("\033c", end="")
         print("Program Installer V2.0".center(120))
         print("下载中...")
-        download(url, name+h)
+        download(url, name+extension)
 
     # 错误处理部分
     def error():
@@ -22,34 +22,33 @@ def anzhuang(name, url, parameter, fs):
         sleep(2)
 
     print("\033c", end="")
-    print("Program Installer V2.0".center(120))
     get = input("是否要安装"+name+"? [Y/n]:")  # 获取用户输入
     # 确认要安装
     if get == "Y" or get == "y" or get == '':
         try:
-            judgment = path.isfile(name+h)  # 判断是否已经存在要下载的文件
-            fsize = path.getsize(name+h)  # 判断文件大小是否正确(单位:字节)
+            judgment = path.isfile(name+extension)  # 判断是否已经存在要下载的文件
+            filesize = path.getsize(name+extension)  # 判断文件大小是否正确(单位:字节)
         except FileNotFoundError:
             pass
             # 不存在或大小不正确
-            if judgment == False or fsize != int("get_fs"):
+            if judgment == False or filesize != int("get_fs"):
                 try:
                     dl()  # 进行下载
-                    b = True  # 记录是否下载正确的文件
+                    judgment = True  # 记录是否下载正确的文件
                 except requests.exceptions.ConnectionError:  # 没有连接网络时的错误处理
                     error()  # 进行错误处理
-                    b = False  # 记录是否下载正确的文件
-            # 存在或大小正确
-            elif judgment == True or fsize == int("get_fs"):
-                b = True  # 记录是否下载正确的文件
+                    judgment = False  # 记录是否下载正确的文件
+            # 存在或大小正
+            elif judgment == True or filesize == int("get_fs"):
+                judgment = True  # 记录是否下载正确的文件
         # 已经下载正确的文件,进行安装
-        if b == True:
+        if judgment == True:
             print("\033c", end="")
             print("Program Installer V2.0".center(120))
             print("安装中...")
             sleep(2)
-            system(name+h+parameter)  # 安装
-            system("del "+name+h)  # 删除文件
+            system(name+extension+parameter)  # 安装
+            system("del "+name+extension)  # 删除文件
             print("\033c", end="")
             print("Program Installer V2.0".center(120))
             print("安装完毕")
