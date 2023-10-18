@@ -6,7 +6,7 @@ import requests
 extension = ".exe"
 
 
-def install_(name, url, parameter, fs):
+def install_(name, url, parameter, fs=None):
     # 下载部分
     def dl():
         print("\033c", end="")

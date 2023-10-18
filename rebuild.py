@@ -5,6 +5,7 @@ import click
 import csv
 from fnmatch import fnmatch
 from tqdm import tqdm
+import numpy
 # from pandas import *
 from uninstall.util import *
 from wpt.install import install_
@@ -15,49 +16,55 @@ h = ".exe"
 search_lists = []
 
 file_path = "csvs/list.csv"
-# f = open(file_path, "r")
-# csv_reader = csv.reader(f)
-# csv_writer = csv.writer(f)
 
-db = sqlite3.connect("list.db")
-cur = db.cursor()
+def loaddb():
+    global db
+    global cur
+    db = sqlite3.connect("list.db")
+    cur = db.cursor()
 
-cur.execute("SELECT name FROM scores WHERE name == 'Everything'")
-db.commit()
-if cur.fetchall() == "Everything":
-    db.commit()
-    print("True")
-z = cur.fetchall(cur.execute(
-    "SELECT name FROM scores WHERE name == 'Everything'"))
-print(z)
-# print(db)
-
-db.commit()
-cur.close()
-db.close()
-
-# z = "INSERT INTO scores VALUES('Everything', 'https://www.voidtools.com/Everything-1.4.1.1024.x64-Setup.exe', '/S', 1, 'Everything 1.4.1.1024 (x64)', 'Flase')"
-# cur.execute(z)
-
+def closedb():
+    try:
+        db.commit()
+        cur.close()
+        db.close()
+    except:
+        pass
 
 @click.group(invoke_without_command=True)
 @click.option("-i", "--install", help="install the program", nargs=1)
+# @click.argument("install", nargs=-1)
 @click.option("-s", "--search", help="search the program", nargs=1)
 @click.option("-g", "--getfilesize", help="get the size of the file", nargs=1)
 @click.option("-r", "--remove", help="remove the program", nargs=1)
 def main(install=None, search=None, remove=None, getfilesize=None):
-    count = 0
-    lists_count = 0
-    """
-    for i in range(line_count):
-        get_name = name_list[count]
-        get_url = urls[count]
-        get_parameter = parameters[count]
-        get_uninstall = str(uninstalls[count])
-        get_fs = filesizes[count]
-    """
+    loaddb()
     if install != None:
-        pass
+        cur.execute("SELECT name FROM scores")
+        results_names = cur.fetchall()
+        cur.execute("SELECT * FROM scores")
+        results_all = cur.fetchall()
+        print(results_names)
+        print(results_all[0])
+        for i in range(0, len(results_names)):
+            try:
+                storage = results_names
+                del(results_names)
+                results_names = []
+                results_names.append(storage[i][0])
+                print(results_names)
+                print(install)
+            except:
+                pass
+            if install in results_names:
+                    print(install[0])
+                    print(install)
+                    install_(results_all[i][0], results_all[i][1], results_all[i][2], results_all[i][3])
+            else:
+                print("没有找到:(")
+        db.commit()
+        cur.close()
+        db.close()
     if search != None:
         pass
     if remove != None:
@@ -74,7 +81,7 @@ def main(install=None, search=None, remove=None, getfilesize=None):
                     csv_writer.writerow()
     if getfilesize != None:
         pass
-
+    closedb()
 
 if __name__ == '__main__':
     main()

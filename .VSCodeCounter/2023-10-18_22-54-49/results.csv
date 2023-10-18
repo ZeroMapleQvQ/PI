@@ -1,0 +1,19 @@
+"filename", "language", "Python", "Database", "Markdown", "CSV", "JSON", "comment", "blank", "total"
+"d:\Project\Program Installer\CLI.py", "Python", 83, 0, 0, 0, 0, 48, 15, 146
+"d:\Project\Program Installer\README.md", "Markdown", 0, 0, 1, 0, 0, 0, 0, 1
+"d:\Project\Program Installer\Untitled-1.ipynb", "JSON", 0, 0, 0, 0, 49, 0, 1, 50
+"d:\Project\Program Installer\csvs\installed.csv", "CSV", 0, 0, 0, 2, 0, 0, 0, 2
+"d:\Project\Program Installer\csvs\list.csv", "CSV", 0, 0, 0, 4, 0, 0, 0, 4
+"d:\Project\Program Installer\getsize.py", "Python", 28, 0, 0, 0, 0, 3, 4, 35
+"d:\Project\Program Installer\list.db", "Database", 0, 10, 0, 0, 0, 0, 0, 10
+"d:\Project\Program Installer\load.py", "Python", 24, 0, 0, 0, 0, 5, 3, 32
+"d:\Project\Program Installer\main.py", "Python", 30, 0, 0, 0, 0, 6, 5, 41
+"d:\Project\Program Installer\rebuild.py", "Python", 78, 0, 0, 0, 0, 3, 7, 88
+"d:\Project\Program Installer\uninstall\__init__.py", "Python", 0, 0, 0, 0, 0, 0, 1, 1
+"d:\Project\Program Installer\uninstall\get_reg_value.py", "Python", 27, 0, 0, 0, 0, 2, 5, 34
+"d:\Project\Program Installer\uninstall\run_asserver.py", "Python", 51, 0, 0, 0, 0, 6, 4, 61
+"d:\Project\Program Installer\uninstall\util.py", "Python", 27, 0, 0, 0, 0, 0, 5, 32
+"d:\Project\Program Installer\wpt\__init__.py", "Python", 0, 0, 0, 0, 0, 0, 1, 1
+"d:\Project\Program Installer\wpt\download.py", "Python", 15, 0, 0, 0, 0, 0, 3, 18
+"d:\Project\Program Installer\wpt\install.py", "Python", 55, 0, 0, 0, 0, 9, 6, 70
+"Total", "-", 418, 10, 1, 6, 49, 82, 60, 626
